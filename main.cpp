@@ -1,9 +1,16 @@
 #include <iostream>
+#include "game.h"
 
-using namespace std;
+//using namespace std;
 
 int main()
 {
-    cout << "Hello World!" << endl;
+    Game game;
+
+    while(!game.getExit())
+    {
+        game.runFrame();
+        game.writeFrame();
+    }
     return 0;
 }
