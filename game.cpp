@@ -60,7 +60,7 @@ void Game::runFrame()
 void Game::writeFrame()
 {
     this->objects = this->states[0]->getObjects();
-//    this->objects->printObjects();
+    this->objects->printObjects();
     this->exit = true;
 }
 
