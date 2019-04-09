@@ -1,5 +1,10 @@
 #include "object.h"
 
+
+#define jumpHeight 10
+#define maxVelosity 12
+#define moveSpeed 1
+
 Object::Object()
 {
 
@@ -105,9 +110,9 @@ void Object::doGravity()
 {
     if(!this->getIsStatic())
     {
-        if(this->getVelY() >= 12)
+        if(this->getVelY() >= maxVelosity)
         {
-            setVelY(12);
+            setVelY(maxVelosity);
         }
         else
         {
@@ -119,16 +124,16 @@ void Object::doGravity()
 
 void Object::moveUp()
 {
-    const int jumpHeight = 10; // make define
+
     this->setVelY(this->getVelY() - jumpHeight);
 }
 
 void Object::moveLeft()
 {
-    this->setVelX(-1);
+    this->setVelX(-moveSpeed);
 }
 
 void Object::moveRight()
 {
-    this->setVelX(1);
+    this->setVelX(moveSpeed);
 }

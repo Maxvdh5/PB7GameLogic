@@ -2,12 +2,13 @@
 #include "objectlist.h"
 #include "object.h"
 #include "level.h"
+#include "states.h"
 #include <iostream>
 
 Game::Game()
 {
     this->exit = false;
-    level = new Level();
+    states.push_back(new Level());
     this->objects = nullptr;
 }
 
@@ -19,32 +20,32 @@ bool Game::getExit()
 void Game::runFrame()
 {
     for( int i = 0; i < 100; i++){
-        this->level->doGravity();
-        this->level->checkCollision();
-        this->level->update();
+        this->states[0]->doGravity();
+        this->states[0]->checkCollision();
+        this->states[0]->update();
        // writeFrame();
     }
 
-    this->objects = this->level->getObjects();
-    Object * player =  this->objects->getFirst();
+    this->objects = this->states[0]->getObjects();
+    Object * player =  this->states[0]->getObjects()->getFirst();
 
     for( int i = 0; i < 40; i++){
 
         player->moveRight();
-        this->level->doGravity();
-        this->level->checkCollision();
-        this->level->update();
+        this->states[0]->doGravity();
+        this->states[0]->checkCollision();
+        this->states[0]->update();
         writeFrame();
     }
 
-     this->level->jump(player);
+     this->states[0]->jump(player);
 
     for( int i = 0; i < 40; i++){
 
         player->moveRight();
-        this->level->doGravity();
-        this->level->checkCollision();
-        this->level->update();
+        this->states[0]->doGravity();
+        this->states[0]->checkCollision();
+        this->states[0]->update();
         writeFrame();
     }
 
@@ -52,7 +53,7 @@ void Game::runFrame()
 
 void Game::writeFrame()
 {
-    this->objects = this->level->getObjects();
+    this->objects = this->states[0]->getObjects();
     this->objects->printObjects();
     this->exit = true;
 }

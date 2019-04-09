@@ -1,6 +1,9 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <iostream>
+#include <vector>
+#include "states.h"
 
 class Level;
 class objectList;
@@ -21,6 +24,7 @@ public:
 private:
     bool exit;
     Level * level;
+    std::vector<States*> states;
     objectList * objects;
 
 };

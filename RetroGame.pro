@@ -7,10 +7,17 @@ SOURCES += main.cpp \
     game.cpp \
     level.cpp \
     object.cpp \
-    objectlist.cpp
+    objectlist.cpp \
+    states.cpp \
+    start.cpp
 
 HEADERS += \
     game.h \
     level.h \
     object.h \
-    objectlist.h
+    objectlist.h \
+    states.h \
+    start.h
+
+DISTFILES += \
+    Junk

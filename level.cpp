@@ -29,6 +29,8 @@ void Level::insertObjects()
     }
 
     list->insertObject(30,0,0,0,0,false,false);
+    list->insertObject(40,0,0,0,0,false,false);
+    list->insertObject(40,-20,0,0,0,false,false);
 
     list->insertObject(10,0,0,0,0,false,false);
 
@@ -55,48 +57,15 @@ bool Level::checkCollision()//+ directon
       {
           if(index != moving)
           {
-//              if(moving->getX() - index->getX() <= 10 && (moving->getY() - index->getY() < 10 && moving->getY() - index->getY() > -10 ))
-//              {
-//                  if(moving->getVelX()>0)
-//                  {
-//                      moving->setVelX(0);
-//                  }
-//                  //moving->direction =  static_cast<Object::Direction>(moving->direction & ~moving->E);
-//              }
-
-//              if(moving->getY() - index->getY() >= -10 && (moving->getX() - index->getX() < 10 && moving->getX() - index->getX() > -10 ))
-//              {
-//                 if(moving->getVelY() >0)
-//                 {
-//                     moving->setVelY(0);
-//                 }
-//                 //moving->direction = static_cast<Object::Direction>(moving->direction & ~moving->S);
-//              }
-
-//              if(moving->getX() - index->getX() >= -10 && (moving->getY() - index->getY() < 10 && moving->getY() - index->getY() > -10 ))
-//              {
-//                  if(moving->getVelX()<0)
-//                  {
-//                      moving->setVelX(0);
-//                  }
-//                  //moving->direction = static_cast<Object::Direction>(moving->direction & ~moving->W);
-//              }
-
-//              if(moving->getY() - index->getY() <= 10 && (moving->getX() - index->getX() < 10 && moving->getX() - index->getX() > -10 ))
-//              {
-//                  if(moving->getVelY() <0)
-//                  {
-//                      moving->setVelY(0);
-//                  }
-//                  //moving->direction = static_cast<Object::Direction>(moving->direction & ~moving->N);
-//              }
-  //vgv
               if((moving->getX()+ moving->getVelX()) - index->getX() <= 10 && (moving->getY() - index->getY() < 10 && moving->getY() - index->getY() > -10 ))
               {
 
                   if(moving->getVelX()<0 && moving->getX() > index->getX())
                   {
                      moving->setVelX(((moving->getX()-index->getX())-10)*-1);
+                     if((moving == list->getFirst() || moving == list->getFirst()->getNext()) && index->getDeathly()){
+                         //do player killed stuff
+                     }
                   }
 
                   //moving->direction =  static_cast<Object::Direction>(moving->direction & ~moving->E);

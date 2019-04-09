@@ -3,8 +3,9 @@
 
 class objectList;
 class Object;
+#include "states.h"
 
-class Level
+class Level : public States
 {
 public:
     Level();
