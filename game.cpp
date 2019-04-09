@@ -3,13 +3,19 @@
 #include "object.h"
 #include "level.h"
 #include "states.h"
-#include <iostream>
+
 
 Game::Game()
 {
     this->exit = false;
-    states.push_back(new Level());
+    states[0] = new Level();
+    vectCount = 1;
     this->objects = nullptr;
+}
+
+Game::~Game()
+{
+
 }
 
 bool Game::getExit()
@@ -54,7 +60,7 @@ void Game::runFrame()
 void Game::writeFrame()
 {
     this->objects = this->states[0]->getObjects();
-    this->objects->printObjects();
+//    this->objects->printObjects();
     this->exit = true;
 }
 

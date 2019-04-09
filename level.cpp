@@ -25,14 +25,14 @@ void Level::insertObjects()
 {
     for (int i = 0; i < 10; i++)
     {
-            list->insertObject(i*10,100,0,0,0,false,true);
+            list->insertObject(i*10,100,0,0,0,false,true,false);
     }
 
-    list->insertObject(30,0,0,0,0,false,false);
-    list->insertObject(40,0,0,0,0,false,false);
-    list->insertObject(40,-20,0,0,0,false,false);
+    list->insertObject(30,0,0,0,0,false,false,false);
+    list->insertObject(40,0,0,0,0,false,false,false);
+    list->insertObject(40,-20,0,0,0,false,false,false);
 
-    list->insertObject(10,0,0,0,0,false,false);
+    list->insertObject(10,0,0,0,0,false,false,false);
 
 }
 

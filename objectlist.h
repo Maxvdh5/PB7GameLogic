@@ -7,7 +7,8 @@ class objectList
 {
 public:
     objectList();
-    void insertObject(int,int,int,int,int,bool,bool);
+    ~objectList();
+    void insertObject(int,int,int,int,int,bool,bool,bool);
 
     void printObjects();
     Object * getFirst();

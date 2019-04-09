@@ -10,7 +10,7 @@ Object::Object()
 
 }
 
-Object::Object(int x, int y, int velX, int velY, int sprite, bool deathly, bool isStatic, Object * volgende)
+Object::Object(int x, int y, int velX, int velY, int sprite, bool deathly, bool isStatic,bool isSelected, Object * volgende)
 {
     this->x = x;
     this->velX = velX;
@@ -19,6 +19,7 @@ Object::Object(int x, int y, int velX, int velY, int sprite, bool deathly, bool 
     this->sprite = sprite;
     this->deathly = deathly;
     this->isStatic = isStatic;
+    this->isSelected = isSelected;
     this->volgende = volgende;
 }
 
@@ -63,6 +64,11 @@ bool Object::getIsStatic()
     return this->isStatic;
 }
 
+bool Object::getIsSelected()
+{
+    return this->isSelected;
+}
+
 void Object::setX(int x)
 {
     this->x = x;
@@ -96,6 +102,11 @@ void Object::setDeathly(bool deathly)
 void Object::setIsStatic(bool isStatic)
 {
     this->isStatic = isStatic;
+}
+
+void Object::setIsSelected(bool isSelected)
+{
+    this->isSelected = isSelected;
 }
 
 void Object::doUpdate()
