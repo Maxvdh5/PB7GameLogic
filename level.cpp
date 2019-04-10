@@ -29,14 +29,25 @@ void Level::update()
 
 void Level::insertObjects()
 {
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 63; i++)
     {
-            list->insertObject(i*10,100,0,0,0,false,true,false);
+            list->insertObject(i*10,390,0,0,0,false,true,false);
+
+    }
+    for (int j = 0; j < 5; j++)
+    {
+        for ( int k = j ; k < 9-j; k++)
+        {
+            list->insertObject(50+(k*10),j*20,0,0,0,false,false,false);
+        }
     }
 
-    list->insertObject(30,0,0,0,0,false,false,false);
-    list->insertObject(40,0,0,0,0,false,false,false);
-    list->insertObject(40,-20,0,0,0,false,false,false);
+   for(int m = 0; m < 37; m++)
+   {
+         list->insertObject(60,m*10,0,0,0,false,true,false);
+   }
+
+
 
     list->insertObject(10,0,0,0,0,false,false,false);
 
