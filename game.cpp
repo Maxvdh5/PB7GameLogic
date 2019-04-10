@@ -53,6 +53,7 @@ void Game::runFrame()
 
     case 11:
         //gameover scherm
+        death = 0;
         locIndex = 0;
         break;
 

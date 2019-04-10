@@ -85,6 +85,42 @@ void Level::insertObjects(int levelSelect)
 
         break;
         case 1:
+
+        for(int i = 0; i<6; i++)
+        {
+            list->insertObject(i*size,18*size,0,0,0,false,true,false);
+        }
+        for(int i = 9; i <19; i++)
+        {
+            list->insertObject(i*size,17*size,0,0,0,false,true,false);
+        }
+        for(int i = 15; i < 19; i++)
+        {
+            list->insertObject(i*size,17*size,0,0,0,false,true,false);
+        }
+        for(int i = 21; i <24; i++)
+        {
+            list->insertObject(i*size,15*size,0,0,0,false,true,false);
+        }
+        for(int i = 15; i <18; i++)
+        {
+            list->insertObject(i*size,14*size,0,0,0,false,true,false);
+        }
+
+        for(int i = 22; i <26; i++)
+        {
+            list->insertObject(i*size,12*size,0,0,0,false,true,false);
+        }
+        for(int i = 14; i <18; i++)
+        {
+            list->insertObject(27*size,i*size,0,0,0,false,true,false);
+        }
+        for(int i = 28; i <31; i++)
+        {
+            list->insertObject(i*size,18*size,0,0,0,false,true,false);
+        }
+
+         list->insertObject(size*2,size*20,0,0,0,false,false,false);
         //level 2
 
 
@@ -206,7 +242,7 @@ void Level::checkCollision()//+ directon
 
                   if(moving->getVelY() < 0 && moving->getY() > index->getY())
                   {
-                    moving->setVelY(((moving->getY()-index->getY())+size)*-1);
+                    moving->setVelY(((moving->getY()-index->getY())-size)*-1);
                     if(moving == list->getFirst())
                     {
                        if(index->getDeathly())
