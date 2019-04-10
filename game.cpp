@@ -51,9 +51,6 @@ void Game::writeFrame()
 int Game::startState()
 {
     //do interupt stuff
-    this->states->goDown();
-    this->states->goUp();
-    this->states->setSelected();
     return this->states->doSelected();
 }
 
@@ -71,12 +68,30 @@ int Game::highscoreState()
     return 0;
 }
 
-//void Game::doSomething()
-//{
-//    for(int i =0; i< 10; i++)
-//    {
-//        std::cout << i << std::endl;
+void Game::inputHandeler(unsigned char input)
+{
+    if(IsBitSet(input,4))
+    {
+        this->states->goDown();
+    }
+    if(IsBitSet(input,3))
+    {
+        this->states->goRight();
+    }
+    if(IsBitSet(input,2))
+    {
+        this->states->goLeft();
+    }
+    if(IsBitSet(input,1))
+    {
+        this->states->jump(this->states->getObjects()->getFirst());
+    }
+}
 
-//    }
-//    this->exit = true;
-//}
+bool Game::IsBitSet(unsigned char byte, int index)
+{
+    int mask = 1<<index;
+    return (byte & mask) != 0;
+}
+
+
