@@ -2,6 +2,9 @@
 #include "object.h"
 #include "objectlist.h"
 
+
+#define size 20
+
 Level::Level()
 {
     list = new objectList;
@@ -31,20 +34,20 @@ void Level::insertObjects()
 {
     for (int i = 0; i < 63; i++)
     {
-            list->insertObject(i*10,390,0,0,0,false,true,false);
+            list->insertObject(i*size,390,0,0,0,false,true,false);
 
     }
     for (int j = 0; j < 5; j++)
     {
         for ( int k = j ; k < 9-j; k++)
         {
-            list->insertObject(50+(k*10),j*20,0,0,0,false,false,false);
+            list->insertObject(100+(k*size),j*size*2,0,0,0,false,false,false);
         }
     }
 
    for(int m = 0; m < 37; m++)
    {
-         list->insertObject(60,m*10,0,0,0,false,true,false);
+         list->insertObject(60,m*size,0,0,0,false,true,false);
    }
 
 
@@ -74,12 +77,12 @@ bool Level::checkCollision()//+ directon
       {
           if(index != moving)
           {
-              if((moving->getX()+ moving->getVelX()) - index->getX() <= 10 && (moving->getY() - index->getY() < 10 && moving->getY() - index->getY() > -10 ))
+              if((moving->getX()+ moving->getVelX()) - index->getX() <= size && (moving->getY() - index->getY() < size && moving->getY() - index->getY() > -size ))
               {
 
                   if(moving->getVelX()<0 && moving->getX() > index->getX())
                   {
-                     moving->setVelX(((moving->getX()-index->getX())-10)*-1);
+                     moving->setVelX(((moving->getX()-index->getX())-size)*-1);
                      if((moving == list->getFirst() || moving == list->getFirst()->getNext()) && index->getDeathly()){
                          //do player killed stuff
                      }
@@ -88,34 +91,34 @@ bool Level::checkCollision()//+ directon
                   //moving->direction =  static_cast<Object::Direction>(moving->direction & ~moving->E);
               }
 
-              if((moving->getY() + moving->getVelY()) - index->getY()  >= -10 && (moving->getX() - index->getX() < 10 && moving->getX() - index->getX() > -10 ))
+              if((moving->getY() + moving->getVelY()) - index->getY()  >= -size && (moving->getX() - index->getX() < size && moving->getX() - index->getX() > -size ))
               {
 
                   if(moving->getVelY() >0 && moving->getY() < index->getY())
                   {
-                      moving->setVelY(((moving->getY()-index->getY())+10)*-1);
+                      moving->setVelY(((moving->getY()-index->getY())+size)*-1);
                   }
 
                  //moving->direction = static_cast<Object::Direction>(moving->direction & ~moving->S);
               }
 
-              if((moving->getX() + moving->getVelX()) - index->getX()  >= -10 && (moving->getY() - index->getY() < 10 && moving->getY() - index->getY() > -10 ))
+              if((moving->getX() + moving->getVelX()) - index->getX()  >= -size && (moving->getY() - index->getY() < size && moving->getY() - index->getY() > -size ))
               {
 
                   if(moving->getVelX()>0 && moving->getX() < index->getX())
                   {
-                    moving->setVelX(((moving->getX()-index->getX())+10)*-1);
+                    moving->setVelX(((moving->getX()-index->getX())+size)*-1);
                   }
 
                   //moving->direction = static_cast<Object::Direction>(moving->direction & ~moving->W);
               }
 
-              if((moving->getY() + moving->getVelY() ) - index->getY() <= 10 && (moving->getX() - index->getX() < 10 && moving->getX() - index->getX() > -10 ))
+              if((moving->getY() + moving->getVelY() ) - index->getY() <= size && (moving->getX() - index->getX() < size && moving->getX() - index->getX() > -size ))
               {
 
                   if(moving->getVelY() < 0 && moving->getY() > index->getY())
                   {
-                    moving->setVelY(((moving->getY()-index->getY())+10)*-1);
+                    moving->setVelY(((moving->getY()-index->getY())+size)*-1);
                   }
 
                   //moving->direction = static_cast<Object::Direction>(moving->direction & ~moving->N);
