@@ -60,7 +60,7 @@ int Highscore::doSelected()
     return 0;
 }
 
-void Highscore::setSelected(int)
+void Highscore::setSelected()
 {
 
 }

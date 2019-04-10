@@ -9,6 +9,7 @@ class Level : public States
 {
 public:
     Level();
+    ~Level();
 
     void update();
     void insertObjects();
@@ -26,11 +27,12 @@ public:
     void goUp() override;
     void switchSelected(Object*) override;
     int doSelected() override;
-    void setSelected(int) override;
+    void setSelected() override;
 
 
 private:
     objectList * list;
+    int nextState;
 };
 
 #endif // LEVEL_H

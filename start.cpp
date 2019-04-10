@@ -8,6 +8,11 @@ start::start()
     this->selected = this->list->getFirst();
 }
 
+start::~start()
+{
+    delete this->list;
+}
+
 void start::createObjects()
 {
     list->insertObject(30,70,0,0,1,false,true,false);
@@ -16,6 +21,20 @@ void start::createObjects()
 }
 
 void start::goDown()
+{
+    Object * looper = this->list->getFirst();
+    while (looper->getNext()!= nullptr)
+    {
+        looper = looper->getNext();
+    }
+
+    if(this->selected != looper)
+    {
+        switchSelected(selected->getNext());
+    }
+}
+
+void start::goUp()
 {
     if(this->selected != this->list->getFirst())
     {
@@ -28,21 +47,7 @@ void start::goDown()
 
         switchSelected(looper);
     }
-}
 
-void start::goUp()
-{
-
-    Object * looper = this->list->getFirst();
-    while (looper->getNext()!= nullptr)
-    {
-        looper = looper->getNext();
-    }
-
-    if(this->selected != looper)
-    {
-        switchSelected(selected->getNext());
-    }
 
 }
 
@@ -69,9 +74,9 @@ int start::doSelected()
     return 99;
 }
 
-void start::setSelected(int Select)
+void start::setSelected()
 {
-    this->select = Select;
+    this->select = true;
 }
 
 void start::update()

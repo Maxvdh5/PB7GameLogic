@@ -6,6 +6,12 @@ Level::Level()
 {
     list = new objectList;
     insertObjects();
+    nextState = 98;
+}
+
+Level::~Level()
+{
+    delete this->list;
 }
 
 void Level::update()
@@ -163,10 +169,10 @@ void Level::switchSelected(Object *)
 
 int Level::doSelected()
 {
-    return 0;
+    return nextState;
 }
 
-void Level::setSelected(int)
+void Level::setSelected()
 {
 
 }

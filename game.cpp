@@ -33,8 +33,9 @@ void Game::runFrame()
     switch(index)
     {
     case 0: locIndex = startState();  delete states; states = new start(); break;
-    case 1: levelState(); delete states; states = new Level() ; break;
-    case 99: break;
+    case 1: locIndex = levelState(); delete states; states = new Level() ; break;
+    case 98: locIndex = levelState(); break;
+    case 99: locIndex = startState(); break;
     }
 
 
@@ -44,18 +45,25 @@ void Game::writeFrame()
 {
     this->objects = this->states->getObjects();
     this->objects->printObjects();
-       this->exit = true;
+       //this->exit = true;
 }
 
 int Game::startState()
 {
     //do interupt stuff
+    this->states->goDown();
+    this->states->goUp();
+    this->states->setSelected();
     return this->states->doSelected();
 }
 
-void Game::levelState()
+int Game::levelState()
 {
-
+    //do interupt stuff
+    this->states->doGravity();
+    this->states->checkCollision();
+    this->states->update();
+    return this->states->doSelected();
 }
 
 int Game::highscoreState()

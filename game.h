@@ -20,7 +20,7 @@ public:
    void writeFrame();
 
    int startState();
-   void levelState();
+   int levelState();
    int highscoreState();
 
 private:

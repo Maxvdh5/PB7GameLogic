@@ -9,6 +9,7 @@ class start : public States
 {
 public:
     start();
+    ~start();
 
 
     void createObjects();
@@ -16,7 +17,7 @@ public:
     void goUp();
     void switchSelected(Object*);
     int doSelected();
-    void setSelected(int);
+    void setSelected();
 
 
 

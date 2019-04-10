@@ -16,7 +16,7 @@ public:
     virtual void goUp()=0;
     virtual void switchSelected(Object*)=0;
     virtual int doSelected()=0;
-    virtual void setSelected(int)=0;
+    virtual void setSelected()=0;
 
 
 

@@ -22,7 +22,7 @@ public:
     void goUp() override;
     void switchSelected(Object*) override;
     int doSelected() override;
-    void setSelected(int) override;
+    void setSelected() override;
 };
 
 #endif // HIGHSCORE_H
