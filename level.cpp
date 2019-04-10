@@ -141,3 +141,33 @@ objectList *Level::getObjects()
     return this->list;
 }
 
+void Level::createObjects()
+{
+
+}
+
+void Level::goDown()
+{
+
+}
+
+void Level::goUp()
+{
+
+}
+
+void Level::switchSelected(Object *)
+{
+
+}
+
+int Level::doSelected()
+{
+    return 0;
+}
+
+void Level::setSelected(int)
+{
+
+}
+

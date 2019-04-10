@@ -19,6 +19,16 @@ public:
 
     objectList *getObjects();
 
+
+
+    void createObjects() override;
+    void goDown() override;
+    void goUp() override;
+    void switchSelected(Object*) override;
+    int doSelected() override;
+    void setSelected(int) override;
+
+
 private:
     objectList * list;
 };

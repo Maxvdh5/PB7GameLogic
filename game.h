@@ -19,11 +19,16 @@ public:
    void runFrame();
    void writeFrame();
 
+   int startState();
+   void levelState();
+   int highscoreState();
+
 private:
     bool exit;
     //Level * level;
-    States * states[5];
-    int vectCount;
+    States * states;
+    int locIndex;
+    int index;
     objectList * objects;
 
 };

@@ -2,15 +2,18 @@
 #include "objectlist.h"
 #include "object.h"
 #include "level.h"
+#include "start.h"
+#include "highscore.h"
 #include "states.h"
 
 
 Game::Game()
 {
     this->exit = false;
-    states[0] = new Level();
-    vectCount = 1;
+    states = new start();
     this->objects = nullptr;
+    this->index = 0;
+    this->locIndex = 0;
 }
 
 Game::~Game()
@@ -25,43 +28,39 @@ bool Game::getExit()
 
 void Game::runFrame()
 {
-    for( int i = 0; i < 100; i++){
-        this->states[0]->doGravity();
-        this->states[0]->checkCollision();
-        this->states[0]->update();
-       // writeFrame();
+    index = locIndex;
+
+    switch(index)
+    {
+    case 0: locIndex = startState();  delete states; states = new start(); break;
+    case 1: levelState(); delete states; states = new Level() ; break;
+    case 99: break;
     }
 
-    this->objects = this->states[0]->getObjects();
-    Object * player =  this->states[0]->getObjects()->getFirst();
-
-    for( int i = 0; i < 40; i++){
-
-        player->moveRight();
-        this->states[0]->doGravity();
-        this->states[0]->checkCollision();
-        this->states[0]->update();
-        writeFrame();
-    }
-
-     this->states[0]->jump(player);
-
-    for( int i = 0; i < 40; i++){
-
-        player->moveRight();
-        this->states[0]->doGravity();
-        this->states[0]->checkCollision();
-        this->states[0]->update();
-        writeFrame();
-    }
 
 }
 
 void Game::writeFrame()
 {
-    this->objects = this->states[0]->getObjects();
+    this->objects = this->states->getObjects();
     this->objects->printObjects();
-    this->exit = true;
+       this->exit = true;
+}
+
+int Game::startState()
+{
+    //do interupt stuff
+    return this->states->doSelected();
+}
+
+void Game::levelState()
+{
+
+}
+
+int Game::highscoreState()
+{
+    return 0;
 }
 
 //void Game::doSomething()
