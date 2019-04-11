@@ -4,6 +4,7 @@ start::start()
 {
     list = new objectList;
     createObjects();
+    select = false;
 
     this->selected = this->list->getFirst();
 }
