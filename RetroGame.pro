@@ -9,8 +9,7 @@ SOURCES += main.cpp \
     object.cpp \
     objectlist.cpp \
     states.cpp \
-    start.cpp \
-    highscore.cpp
+    start.cpp
 
 HEADERS += \
     game.h \
@@ -18,8 +17,7 @@ HEADERS += \
     object.h \
     objectlist.h \
     states.h \
-    start.h \
-    highscore.h
+    start.h
 
 DISTFILES += \
     Junk

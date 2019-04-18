@@ -3,7 +3,6 @@
 #include "object.h"
 #include "level.h"
 #include "start.h"
-#include "highscore.h"
 #include "states.h"
 
 
@@ -137,7 +136,7 @@ void Game::inputHandeler(unsigned char input)
     }
     if(input == 0)
     {
-
+        this->states->goStop();
     }
 }
 

@@ -78,6 +78,8 @@ void Level::insertObjects(int levelSelect)
 
         list->insertObject(size*30,size*17,0,0,0,false,true,true);
 
+        list->insertObject(size * 16, size * 2,0,0,0,false,false,false);
+
         list->insertObject(size*2,size*2,0,0,0,false,false,false);
         //level 1
 
@@ -155,6 +157,8 @@ void Level::checkCollision()//+ directon
 {
   Object * moving = list->getFirst();
 
+  bool HorizontalCollision = false;
+
   if(moving->getY()>460||moving->getVelY()<-10)
   {
       nextState = 51;
@@ -172,20 +176,29 @@ void Level::checkCollision()//+ directon
 
                   if(moving->getVelX()<0 && moving->getX() > index->getX())
                   {
-                     moving->setVelX(((moving->getX()-index->getX())-size)*-1);
-                     if(moving == list->getFirst())
-                     {
-                        if(index->getDeathly())
-                        {
-                            nextState = 51;
-                            return;
-                        }
-                        else if(index->getIsSelected())
-                        {
-                            nextState = 50;
-                            return;
-                        }
+                      if(index->getIsStatic()){
+                          moving->setVelX(((moving->getX()-index->getX())-size)*-1);
+                          if(moving == list->getFirst())
+                          {
+                             if(index->getDeathly())
+                             {
+                                 nextState = 51;
+                                 return;
+                             }
+                             else if(index->getIsSelected())
+                             {
+                                 nextState = 50;
+                                 return;
+                             }
+                      }
+
+
                      }
+
+                      else if (moving == list->getFirst())
+                      {
+                            HorizontalCollision = true;
+                      }
                   }
 
                   //moving->direction =  static_cast<Object::Direction>(moving->direction & ~moving->E);
@@ -220,20 +233,28 @@ void Level::checkCollision()//+ directon
 
                   if(moving->getVelX()>0 && moving->getX() < index->getX())
                   {
-                    moving->setVelX(((moving->getX()-index->getX())+size)*-1);
-                    if(moving == list->getFirst())
-                    {
-                       if(index->getDeathly())
-                       {
-                           nextState = 51;
-                           return;
-                       }
-                       else if(index->getIsSelected())
-                       {
-                           nextState = 50;
-                           return;
-                       }
+                      if(index->getIsStatic())
+                      {
+                          moving->setVelX(((moving->getX()-index->getX())+size)*-1);
+                          if(moving == list->getFirst())
+                          {
+                             if(index->getDeathly())
+                             {
+                                 nextState = 51;
+                                 return;
+                             }
+                             else if(index->getIsSelected())
+                             {
+                                 nextState = 50;
+                                 return;
+                             }
+                      }
+
                     }
+                      else if(moving == list->getFirst())
+                      {
+                          HorizontalCollision = true;
+                      }
                   }
 
                   //moving->direction = static_cast<Object::Direction>(moving->direction & ~moving->W);
@@ -259,6 +280,15 @@ void Level::checkCollision()//+ directon
                   }
 
                   //moving->direction = static_cast<Object::Direction>(moving->direction & ~moving->N);
+              }
+
+              if(HorizontalCollision)
+              {
+                  index->setVelX(moving->getVelX());
+              }
+              else
+              {
+                  index->setVelX(0);
               }
           }
           index = index->getNext();
